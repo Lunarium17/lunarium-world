@@ -1,19 +1,20 @@
-import './assets/main.css'
+// src/main.js
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+// Asegúrate de tener estas líneas
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap' // (Opcional, si necesitas JS de Bootstrap)
+
+import './assets/theme.css' // Tu archivo de estilos personalizado
+
 import App from './App.vue'
 import router from './router'
 
-// Importa estilos boostrap
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap'
-
 const app = createApp(App)
-const pinia = createPinia()
 
-app.use(pinia) // Usa Pinia para el estado global
-app.use(router) // Usa Vue Router para la navegación
+app.use(createPinia())
+app.use(router)
 
 app.mount('#app')

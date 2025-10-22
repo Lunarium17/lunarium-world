@@ -5,7 +5,7 @@ import { defineStore } from 'pinia';
 // --- BASE DE DATOS DE PRODUCTOS (CATÁLOGO) ---
 // (Asegúrate de poner las imágenes en la carpeta 'public/images/')
 const initialProducts = [
-  { id: 1, name: 'Elden Ring', price: 979.00, image: 'images/Elden Ring.jpg'},
+  { id: 1, name: 'Elden Ring', price: 979.00, image: 'images/Elden ring.jpg'},
   { id: 2, name: 'Audífonos Blackshark V2', price: 1299.00, image: 'images/Audífonos Blackshark V2.jpg' },
   { id: 3, name: 'Xbox Control Elite Series 2', price: 2599.00, image: 'images/Xbox Control Elite Series 2.jpg' },
   { id: 4, name: 'Laptop Gaming TUF F15', price: 28599.00, image: 'images/Laptop Gaming TUF F15.jpg' },
@@ -24,7 +24,7 @@ export const useProductoStore = defineStore('producto', {
   actions: {
     crearProducto(producto) {
       // Asigna un nuevo ID
-      const nuevoProducto = { ...producto, id: this.nextId++ };
+      const nuevoProducto = { ...producto, id: this.nextId++, image: producto.image || 'images/placeholder.png' };
       this.productos.push(nuevoProducto);
     },
 
@@ -45,5 +45,7 @@ export const useProductoStore = defineStore('producto', {
     obtenerProductoPorId: (state) => {
       return (id) => state.productos.find(p => p.id === id);
     }
-  }
+  },
+
+  persist: true,
 });

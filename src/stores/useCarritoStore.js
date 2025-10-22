@@ -4,17 +4,19 @@ import { defineStore } from 'pinia';
 
 export const useCarritoStore = defineStore('carrito', {
   state: () => ({
-    carrito: [], // Arreglo de productos en el carrito
+    carrito: [],
   }),
 
   actions: {
     agregarAlCarrito(producto) {
-      // Opcional: verificar si ya existe para aumentar cantidad
+      // Esta acción sigue igual, apila productos duplicados
       this.carrito.push(producto);
     },
 
-    eliminarDelCarrito(id) {
-      this.carrito = this.carrito.filter(p => p.id !== id);
+    // --- ¡ACCIÓN MODIFICADA! ---
+    // Ahora recibe el índice del elemento a borrar
+    eliminarDelCarrito(itemIndex) {
+      this.carrito.splice(itemIndex, 1);
     },
 
     vaciarCarrito() {
@@ -26,7 +28,6 @@ export const useCarritoStore = defineStore('carrito', {
     totalArticulos: (state) => {
       return state.carrito.length;
     },
-
     totalPrecio: (state) => {
       return state.carrito.reduce((total, producto) => total + producto.price, 0);
     }

@@ -1,0 +1,201 @@
+/* src/assets/theme.css */
+
+/* IMPORTAMOS UNA FUENTA DESDE Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #9f3ffc; /* Morado principal */
+    --secondary-color: #1a1a2e; /* Gris oscuro para texto/cabeceras */
+    --background-color: #0f0f1b; /* Un gris muy claro para el fondo */
+    --surface-color: #1a1a2e; /* Blanco para tarjetas y contenedores */
+    --text-color: #e0e0e0;
+    --accent-color: #00d9ff; /* Un color de acento (ej. cian) */
+}
+
+/* ESTILOS GENERALES (SEGUROS) */
+body {
+    font-family: 'Roboto';
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    /* Damos espacio para la cabecera fija de Bootstrap */
+    padding-top: 70px; 
+}
+
+h1, h2, h3{
+    color: var(--accent-color);
+}
+
+.logoluna {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.titulo{
+    text-align: center;
+    color: aquamarine;
+}
+
+.title2{
+    text-align: center;
+}
+
+/* TOAST */
+/* AGREGAR ESTILOS PARA TOAST POR QUE HABIA ERROR*/
+/* (Este CSS no se usará si no lo implementas en Vue, pero no estorba) */
+.toast { 
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(159, 63, 252, 0.5);
+ }
+
+/* FORMULARIOS */
+.form-container{
+    background-color: var(--surface-color);
+    border: 1px solid var(--primary-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: left; /* Alineado a la izquierda es más legible */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input {
+    background-color: #2c2c3e;
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+/* BOTONES */
+.remove-btn {
+    background: #ff4757; /* btn de eliminar */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    transition: background-color 0.3s ease;
+}
+.remove-btn:hover {
+    background: #e02f3f;
+}
+
+button, .add-to-cart-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: 0;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(159, 63, 252, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 5px; /* Añadido para separar botones */
+}
+button:hover, .add-to-cart-btn:hover {
+    background: var(--accent-color);
+    color: var(--secondary-color);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.7);
+}
+button:disabled {
+    background: #888;
+    cursor: not-allowed;
+}
+
+
+/* CATÁLOGO */
+.produc-grid{
+    display: grid; /* Usamos Grid para un mejor control */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Columnas responsivas */
+    gap: 20px;
+    justify-content: center;
+}
+
+.produc-card {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--surface-color);
+    border: 2px solid var(--primary-color); 
+    box-shadow: 0 0 15px rgba(159, 63, 252, 0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+.produc-card:hover {
+    transform: translateY(-5px); /* Corregido 'translateY' */
+    box-shadow: 0 0 25px rgba(159, 63, 252, 0.5);
+}
+
+.produc-card img{
+    max-width: 100%; /* Ajustado para ser responsivo */
+    height: 180px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* TABLA (Para el carrito) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    background-color: var(--surface-color);
+    box-shadow: 0 0 20px rgba(159, 63, 252, 0.15);
+    border-radius: 8px;
+    overflow: hidden; /* Asegura que los bordes redondeados se vean */
+}
+table thead tr {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+table th, table td {
+    border: 1px solid #333; /* Borde más oscuro para el tema */
+    padding: 12px 15px;
+    text-align: left;
+}
+table tbody tr:hover {
+    background-color: #2c2c3e;
+}
+
+/* CARRITO */
+.total-section {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+/* INPUT DE CANTIDAD */
+.quantity {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    background-color: #2c2c3e;
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    border-radius: 4px;
+}
